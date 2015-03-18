@@ -41,7 +41,7 @@ DraggableEach.prototype.treeFor = function treeFor(name) {
  };
 
 DraggableEach.prototype.included = function(app){
-  app.import('bower_components/jquery-ui-sortable/jquery-ui-sortable.js');
+  app.import('bower_components/jquery-ui/ui/jquery-ui.js');
 }
 
 module.exports = DraggableEach;

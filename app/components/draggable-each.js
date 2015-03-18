@@ -37,10 +37,11 @@ function applySortable(el, target, method, itemSelector, handleSelector, connect
     options.connectWith = connectWith || false;
 
     if (axis)           { options.axis   = axis;           }
-    if (itemSelector)   { options.item   = itemSelector;   }
+    if (itemSelector)   { options.items  = itemSelector;   }
     if (handleSelector) { options.handle = handleSelector; }
-
-    el.sortable(options);
+    Ember.run.next(function() {
+      el.sortable(options);
+    });
   }
 }
 
@@ -123,7 +124,7 @@ export default Ember.CollectionView.extend(Ember.TargetActionSupport, {
 
   didInsertElement: function () {
     Ember.View.views[this.get('elementId')] = this;
-    applySortable(this.$(),
+    applySortable(this.$('.ember-drag-list'),
                   this,
                   'itemWasDragged',
                   this.get('itemSelector'),
